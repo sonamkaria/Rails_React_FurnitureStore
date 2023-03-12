@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useAppSelector } from '../../app/hooks'
-import { fetchFurnituresAsync, selectFurnitures, selectStatus, Statuses } from './furnitureSlice'
+import { fetchFurnituresAsync, selectFurnitures, selectStatus, Statuses, updateFurnitureAsync } from './furnitureSlice'
 import {ThunkDispatch} from "@reduxjs/toolkit";
 import Furniture from './Furniture';
 import FurnitureForm from './FurnitureForm';
@@ -12,10 +12,27 @@ function Furnitures() {
     const status = useAppSelector(selectStatus)
     const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
 
+    const [furnitureToEdit, setPostToEdit] = useState(0);
+
     useEffect(() => {
         dispatch(fetchFurnituresAsync());
     },[dispatch]);
     
+    function toggleEditForm(furniture_id?:number) {
+        if (furnitureToEdit === furniture_id) {
+            setPostToEdit(0);
+        } else {
+              setPostToEdit(furniture_id as number);
+        }
+    }
+
+    function submitEdit(formData:any) {
+        dispatch(updateFurnitureAsync(formData));
+        toggleEditForm();
+    }
+  
+
+
     let contents;
         if(status !== Statuses.UpToDate){
             contents = <div>{status}</div>
@@ -30,6 +47,9 @@ function Furnitures() {
                         < Furniture
                         dispatch= {dispatch}
                         furniture={furniture}
+                        toggleEditForm={() => toggleEditForm(furniture.id)}
+                        furnitureToEdit={furnitureToEdit}
+                        submitEdit={submitEdit}
                         />
                         </div>
                 })}

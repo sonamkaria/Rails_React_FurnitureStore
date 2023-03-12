@@ -1,4 +1,4 @@
-import { FurnitureFormData, FurnituresState } from "./furnitureSlice"
+import { FurnitureFormData, FurnituresState, FurnitureDeleteData } from "./furnitureSlice"
 
 const API_URL = "http://localhost:3000";
 
@@ -33,3 +33,38 @@ export async function createFurniture(payload: FurnitureFormData) {
             return {} as FurnituresState
         })
 }
+export async function updateFurniture(payload: FurnitureFormData) {
+    const furniture = payload.furniture;
+    return fetch(`${API_URL}/furnitures/${furniture.id}.json`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        furniture
+      }),
+    })
+      .then((response) => response.json())
+      .catch((error) => {
+        console.log("Error: ", error);
+        return {} as FurnituresState;
+      });
+  }
+  
+  export async function destroyFurniture(payload: FurnitureDeleteData) {
+    const furniture = payload.furniture;
+    return fetch(`${API_URL}/furnitures/${furniture.furniture_id}.json`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        furniture,
+      }),
+    })
+      .then((response) => response.json())
+      .catch((error) => {
+        console.log("Error: ", error);
+        return {} as FurnituresState;
+      });
+  }
