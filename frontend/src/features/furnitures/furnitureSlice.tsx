@@ -36,11 +36,13 @@ export interface FurnitureState {
 export interface FurnituresState {
     furnitures: FurnitureState[];
     status: string;
+    
 }
 
 export interface FurnitureUpdateData {
     furniture_id: number;
     furniture: FurnitureState;
+
 }
 
 export interface FurnitureDeleteData {
