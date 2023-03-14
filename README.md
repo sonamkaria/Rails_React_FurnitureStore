@@ -12,21 +12,23 @@
 
 #### An admin account to add, update,delete user data
 
+### App Screenshot
+#### ![banner](./images/furnitureStore_ss.png)
 
 ---
 
 ### Wireframes
-#### ![banner](./images/IMG_5689.jpg)
+#### ![banner](./images/wireframe.JPG)
 
 ---
 
 ### ERD
 
-#### title 
-#### body
-#### image 
-#### price
-#### color 
+#### title-String
+#### body-String
+#### image-String
+#### price-Number
+#### color-String
 
 ---
 
@@ -44,11 +46,14 @@
 ---
 
 ### Getting Started: 
-#### TRELLO BOARD: ![banner](./images/trello_rails.jpg)
+#### TRELLO BOARD: ![banner](./images/trello_rails.png)
 
 ---
 
-#### Netlify Link: https://eclectic-alfajores-0d20ee.netlify.app/
+#### Netlify Frontend Link: https://eclectic-alfajores-0d20ee.netlify.app/
+#### Render Backend Link: https://react-crud-furniturestore.onrender.com/furnitures
+#### Github Backend: https://github.com/sonamkaria/Rails_React_FurnitureStore
+#### Github Frontend:https://github.com/sonamkaria/Rails_React_FurnitureStore_frontend
 
 ---
 
